@@ -1,0 +1,70 @@
+<div class="container">
+  <h3>Relatório de Audiência por Emissora</h3>
+  <form id="formDadosAuxilio" (ngSubmit)="Pesquisar(form)" #form="ngForm" novalidate>
+  
+      <div class="form-group row l1">
+          <div class="col-md-4">
+              <label>Data Audiência</label>
+              <input class="form-control form-control-lg" [(ngModel)]="data" name="data" type="date" maxlength=""
+              placeholder="Data">
+          </div>
+          <div class="col-md-4">
+              <label>Visão de Audiência</label>
+              <select class="form-control form-control-lg" [(ngModel)]="visaoAudiencia" name="visaoAudiencia">
+                  <option value="soma">Soma</option>
+                  <option value="media">Média</option>
+                </select>
+          </div>
+        <!-- <input type="hidden" [(ngModel)]="emissoraForm.id" name="id"> -->
+       
+
+      </div>
+      <div class="form-group l1">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-success form-control">
+            Pesquisar
+          </button>
+        </div>
+      </div>
+    </form>
+
+  <div class="row col-sm-12"  style="overflow: auto; height: 250px; padding: 20px">
+    <table [hidden]="!mostrarSoma" class="table table-striped">
+      <thead style="background-color: #e3f2fd">
+        <tr>
+          <th>Nome</th>
+          <th>Data</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let totalAudienciaEmissora of totalAudienciaEmissoras">
+          <td>{{totalAudienciaEmissora.emissora.nome}}</td>
+          <td>{{totalAudienciaEmissora.data  | date: 'dd/MM/yyyy'}}</td>
+          <td>{{totalAudienciaEmissora.totalPontos_Audiencia}}</td>
+         
+        </tr>
+      </tbody>
+
+    </table>
+    <table [hidden]="!mostrarMedia" class="table table-striped">
+        <thead style="background-color: #e3f2fd">
+          <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Média</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mediaAudienciaEmissora of mediaAudienciaEmissoras">
+            <td>{{mediaAudienciaEmissora.emissora.nome}}</td>
+            <td>{{mediaAudienciaEmissora.data | date: 'dd/MM/yyyy'}}</td>
+            <td>{{mediaAudienciaEmissora.mediaPontos_Audiencia}}</td>
+           
+          </tr>
+        </tbody>
+  
+      </table>
+
+  </div>
+</div>

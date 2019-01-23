@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="jumbotron" style="margin-top: 50px;">
+      <h3>Cadastro de Audiência</h3><br />
+      <form id="formDadosAuxilio" (ngSubmit)="Salvar(form)" #form="ngForm" novalidate>
+  
+        <div class="form-group row l1">
+            <div class="col-md-4">
+                <label>Data e Hora de Audiência</label>
+                <input class="form-control form-control-lg" [(ngModel)]="audienciaForm.data_Hora_Audiencia" name="data_Hora_Audiencia" type="datetime-local" maxlength=""
+                placeholder="Data Hora Audiência">
+            </div>
+            <div class="col-md-4">
+                <label>Emissora</label>
+                <select class="form-control form-control-lg" [(ngModel)]="audienciaForm.emissora_Audiencia" name="emissora_Audiencia">
+                    <option  *ngFor="let emissora of emissoras" [value]="emissora.id">{{emissora.nome}}</option>
+                  </select>
+            </div>
+          <div class="col-md-2">
+              <label>Ponto Audiencia</label>
+              <input class="form-control form-control-lg" [(ngModel)]="audienciaForm.pontos_Audiencia" name="pontos_Audiencia" type="text" maxlength=""
+              placeholder="Pontos Audiência">
+          </div>
+          <!-- <input type="hidden" [(ngModel)]="emissoraForm.id" name="id"> -->
+         
+
+        </div>
+        <div class="form-group l1">
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-success form-control">
+              Salvar
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" (click)="Limpar()" class="btn btn-warning form-control">
+              Cancelar
+            </button>
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  
+  </div>
